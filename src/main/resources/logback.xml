@@ -22,10 +22,6 @@
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <logger name="AuditLog" level="INFO" additivity="false">
-        <appender-ref ref="STDOUT"/>
-    </logger>
-
     <logger name="org.goafabric" level="INFO" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
@@ -34,7 +30,7 @@
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <logger name="org.flywaydb.core" level="DEBUG" additivity="false">
+    <logger name="org.flywaydb.core" level="INFO" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 
