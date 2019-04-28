@@ -34,7 +34,7 @@ public class PersonRepository {
     private PersonBo createPerson(String lastName) {
         return PersonBo.builder()
                 .firstName("john")
-                .familyName(lastName)
+                .lastName(lastName)
                 .build();
     }
 

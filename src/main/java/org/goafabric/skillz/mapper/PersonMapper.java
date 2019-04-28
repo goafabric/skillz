@@ -7,9 +7,9 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface PersonMapper {
-    @Mapping(source = "familyName", target = "lastName")
+    @Mapping(source = "lastName", target = "lastName")
     Person toDto(PersonBo person);
 
-    @Mapping(source = "lastName", target = "familyName")
+    @Mapping(source = "lastName", target = "lastName")
     PersonBo toBo(Person person);
 }
