@@ -22,18 +22,14 @@
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <logger name="org.goafabric" level="INFO" additivity="false">
-        <appender-ref ref="STDOUT"/>
-    </logger>
-
-    <logger name="com.netflix" level="WARN" additivity="false">
-        <appender-ref ref="STDOUT"/>
-    </logger>
-
     <logger name="org.flywaydb.core" level="WARN" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 
+    <logger name="org.goafabric" level="INFO" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    
     <root level="WARN">
         <appender-ref ref="STDOUT"/>
     </root>

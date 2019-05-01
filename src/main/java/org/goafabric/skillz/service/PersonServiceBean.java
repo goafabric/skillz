@@ -9,8 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping(value = PersonService.RESOURCE,
-        produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = PersonService.RESOURCE, produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 @Transactional
 @Slf4j
