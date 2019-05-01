@@ -2,7 +2,6 @@ package org.goafabric.skillz.logic;
 
 import org.goafabric.skillz.mapper.PersonMapper;
 import org.goafabric.skillz.persistence.PersonRepository;
-import org.goafabric.skillz.persistence.domain.PersonBo;
 import org.goafabric.skillz.service.dto.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,8 +26,8 @@ public class PersonLogic {
     }
 
     public List<Person> findAll() {
-        List<PersonBo> persons = personRepository.findAll();
-        persons.get(0).getAddress().getCity();
+        //List<PersonBo> persons = personRepository.findAll();
+        //persons.get(0).getAddress().getCity();
         return personMapper.map(
                 personRepository.findAll());
     }
