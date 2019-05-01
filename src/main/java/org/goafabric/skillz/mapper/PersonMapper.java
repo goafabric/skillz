@@ -10,10 +10,10 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface PersonMapper {
     @Mapping(source = "lastName", target = "lastName")
-    Person toDto(PersonBo person);
+    Person map(PersonBo person);
 
     @Mapping(source = "lastName", target = "lastName")
-    PersonBo toBo(Person person);
+    PersonBo map(Person person);
 
-    List<Person> toDtos(List<PersonBo> person);
+    List<Person> map(List<PersonBo> person);
 }

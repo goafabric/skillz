@@ -21,29 +21,29 @@ public class PersonLogic {
     }
 
     public Person getById(String id) {
-        return personMapper.toDto(
+        return personMapper.map(
                 personRepository.getOne(id));
     }
 
     public List<Person> findAll() {
-        return personMapper.toDtos(
+        return personMapper.map(
                 personRepository.findAll());
     }
 
     public List<Person> findByFirstName(String firstName) {
-        return personMapper.toDtos(
+        return personMapper.map(
                 personRepository.findByFirstName(firstName));
     }
 
     public List<Person> findByCity(String city) {
-        return personMapper.toDtos(
+        return personMapper.map(
                 personRepository.findByCity(city));
     }
 
     public Person save(Person person) {
-        return personMapper.toDto(
+        return personMapper.map(
                 personRepository.save(
-                        personMapper.toBo(person)));
+                        personMapper.map(person)));
     }
 
 
