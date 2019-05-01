@@ -1,8 +1,8 @@
 package org.goafabric.skillz;
 
-import org.goafabric.skillz.persistence.AddressBo;
+import org.goafabric.skillz.persistence.domain.AddressBo;
 import org.goafabric.skillz.persistence.AddressRepository;
-import org.goafabric.skillz.persistence.PersonBo;
+import org.goafabric.skillz.persistence.domain.PersonBo;
 import org.goafabric.skillz.persistence.PersonRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

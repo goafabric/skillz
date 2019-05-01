@@ -1,4 +1,4 @@
-package org.goafabric.skillz.persistence;
+package org.goafabric.skillz.persistence.domain;
 
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;

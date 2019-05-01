@@ -1,12 +1,13 @@
 package org.goafabric.skillz.service;
 
 import org.goafabric.skillz.service.dto.Person;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 public interface PersonService {
-    static final String RESOURCE = "/persons";
+    String RESOURCE = "/persons";
 
     @GetMapping("")
     String welcome();
@@ -23,6 +24,6 @@ public interface PersonService {
     @GetMapping("findByCity")
     List<Person> findByCity(@RequestParam String city);
 
-    @PostMapping(value = "save", consumes = "application/json")
+    @PostMapping(value = "save", consumes = MediaType.APPLICATION_JSON_VALUE)
     Person save(@RequestBody Person person);
 }

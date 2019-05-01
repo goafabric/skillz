@@ -1,4 +1,4 @@
-package org.goafabric.skillz.persistence;
+package org.goafabric.skillz.persistence.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

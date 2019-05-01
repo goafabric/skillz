@@ -1,6 +1,6 @@
 package org.goafabric.skillz.mapper;
 
-import org.goafabric.skillz.persistence.PersonBo;
+import org.goafabric.skillz.persistence.domain.PersonBo;
 import org.goafabric.skillz.service.dto.Person;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
