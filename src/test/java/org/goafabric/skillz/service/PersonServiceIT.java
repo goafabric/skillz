@@ -33,7 +33,7 @@ public class PersonServiceIT {
     @Test
     public void findByFirstName() {
         personService.save(createPerson());
-        assertThat(personService.findByFirstName("Margedff"))
+        assertThat(personService.findByFirstName("Marge"))
                 .isNotNull()
                 .isNotEmpty();
     }

@@ -1,6 +1,9 @@
 package org.goafabric.skillz.persistence;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDateTime;
@@ -10,6 +13,9 @@ import javax.persistence.*;
 @Entity
 @Table(name="person")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PersonBo {
     private static final long serialVersionUID = 1L;
 
