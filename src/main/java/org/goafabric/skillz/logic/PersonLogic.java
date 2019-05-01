@@ -32,8 +32,8 @@ public class PersonLogic {
                 .collect(Collectors.toList());
     }
 
-    public Person findByFirstName(String firstName) {
-        return personMapper.toDto(
+    public List<Person> findByFirstName(String firstName) {
+        return personMapper.toDtos(
                 personRepository.findByFirstName(firstName));
     }
 

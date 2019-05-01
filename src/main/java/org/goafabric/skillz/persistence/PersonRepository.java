@@ -3,7 +3,9 @@ package org.goafabric.skillz.persistence;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface PersonRepository extends JpaRepository<PersonBo, String> {
-    PersonBo findByFirstName(String firstName);
+    List<PersonBo> findByFirstName(String firstName);
 }

@@ -18,7 +18,7 @@ public interface PersonService {
     List<Person> findAll();
 
     @GetMapping("findByFirstName")
-    Person findByFirstName(@RequestParam("firstName") String firstName);
+    List<Person> findByFirstName(@RequestParam("firstName") String firstName);
 
 
     @PostMapping(value = "save", consumes = "application/json")
