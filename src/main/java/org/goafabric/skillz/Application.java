@@ -58,7 +58,6 @@ public class Application {
                             .build())
                     .build());
 
-
         };
     }
 }

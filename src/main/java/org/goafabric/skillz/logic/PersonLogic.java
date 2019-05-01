@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 public class PersonLogic {
@@ -27,9 +26,8 @@ public class PersonLogic {
     }
 
     public List<Person> findAll() {
-        return personRepository.findAll()
-                .stream().map(personMapper::toDto)
-                .collect(Collectors.toList());
+        return personMapper.toDtos(
+                personRepository.findAll());
     }
 
     public List<Person> findByFirstName(String firstName) {
@@ -37,6 +35,10 @@ public class PersonLogic {
                 personRepository.findByFirstName(firstName));
     }
 
+    public List<Person> findByCity(String city) {
+        return personMapper.toDtos(
+                personRepository.findByCity(city));
+    }
 
     public Person save(Person person) {
         return personMapper.toDto(

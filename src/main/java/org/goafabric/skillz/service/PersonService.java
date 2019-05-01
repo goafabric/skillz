@@ -20,6 +20,8 @@ public interface PersonService {
     @GetMapping("findByFirstName")
     List<Person> findByFirstName(@RequestParam("firstName") String firstName);
 
+    @GetMapping("findByCity")
+    List<Person> findByCity(@RequestParam("city") String city);
 
     @PostMapping(value = "save", consumes = "application/json")
     Person save(@RequestBody Person person);
