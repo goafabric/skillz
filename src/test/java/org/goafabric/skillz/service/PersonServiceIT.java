@@ -23,8 +23,7 @@ public class PersonServiceIT {
     @Test
     public void getById() {
         final Person person = personService.save(createPerson());
-        final Person person2 = personService.getById(person.getId());
-        assertThat(person2)
+        assertThat(personService.getById(person.getId()))
                 .isNotNull();
     }
 

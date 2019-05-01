@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 
@@ -25,39 +26,38 @@ public class Application {
     @Bean
     @Transactional
     public CommandLineRunner loadData(
-            PersonRepository repository, AddressRepository addressRepository) {
+            DataCreator dataCreator, PersonRepository repository, AddressRepository addressRepository) {
         return (args) -> {
+            dataCreator.create(repository, addressRepository);
+        };
+    }
 
-            /*
+
+    @Component
+    public class DataCreator {
+
+        @Transactional
+        public void create(PersonRepository repository, AddressRepository addressRepository) {
             repository.save(PersonBo.builder()
                     .firstName("Homer").lastName("Simpson")
-                    .address(addressRepository.save(
-                            AddressBo.builder()
-                                    .street("Evergreen Terace 1").city("Springfield")
-                                    .build()))
-                    .build());
-             */
-
-            repository.save(PersonBo.builder()
-                    .firstName("Homer").lastName("Simpson")
-                        .address(AddressBo.builder()
-                            .street("Evergreen Terace 1").city("Springfield")
-                            .build())
+                    .address(createAddress(addressRepository, "Evergreen Terace 1"))
                     .build());
 
             repository.save(PersonBo.builder()
                     .firstName("Bart").lastName("Simpson")
-                        .address(AddressBo.builder()
-                                .street("Everblue Terace 1").city("Springfield")
-                                .build())
+                    .address(createAddress(addressRepository, "Everblue Terace 1"))
                     .build());
             repository.save(PersonBo.builder()
                     .firstName("Monty").lastName("Burns")
-                    .address(AddressBo.builder()
-                            .street("Monty Mansion").city("Springfield")
-                            .build())
+                    .address(createAddress(addressRepository, "Monty Mansion"))
                     .build());
+        }
 
-        };
+        private AddressBo createAddress(AddressRepository addressRepository, String street) {
+            return addressRepository.save(
+                    AddressBo.builder()
+                            .street(street).city("Springfield")
+                            .build());
+        }
     }
 }
