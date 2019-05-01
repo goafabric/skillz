@@ -17,9 +17,13 @@ public class PersonLogic {
     @Autowired
     private PersonRepository personRepository;
 
+    public String welcome() {
+        return "welcome";
+    }
+
     public Person getById(String id) {
         return personMapper.toDto(
-                personRepository.getById(id));
+                personRepository.getOne(id));
     }
 
     public List<Person> findAll() {
@@ -28,9 +32,9 @@ public class PersonLogic {
                 .collect(Collectors.toList());
     }
 
-    public Person findByIsoCode(String firstName) {
+    public Person findByFirstName(String firstName) {
         return personMapper.toDto(
-                personRepository.findByIsoCode(firstName));
+                personRepository.findByFirstName(firstName));
     }
 
 
