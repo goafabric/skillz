@@ -1,5 +1,6 @@
 package org.goafabric.skillz.service;
 
+import org.goafabric.skillz.service.dto.Address;
 import org.goafabric.skillz.service.dto.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,15 +34,17 @@ public class PersonServiceIT {
     @Test
     public void findByFirstName() {
         personService.save(createPerson());
-        assertThat(personService.findByFirstName("Marge"))
+        assertThat(personService.findByFirstName("Ralf"))
                 .isNotNull()
                 .isNotEmpty();
     }
 
     private Person createPerson() {
         return Person.builder()
-                .firstName("Marge")
-                .lastName("Simpson")
+                .firstName("Ralf").lastName("Wiggum")
+                .address(Address.builder()
+                        .street("Evergreen Terace 1").city("Springfield")
+                        .build())
                 .build();
     }
 }
