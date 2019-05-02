@@ -20,8 +20,7 @@ public class MainView extends VerticalLayout {
     private PersonEditor personEditor;
 
     private final Grid<Person> grid;
-    final TextField filter;
-
+    private final TextField filter;
     private final Button addNewBtn;
 
     public MainView(PersonLogic personLogic, PersonEditor personEditor) {
@@ -37,22 +36,7 @@ public class MainView extends VerticalLayout {
     private void initView() {
         createLayout();
         addSearchFilter();
-
-        // Connect selected Customer to editor or hide if none is selected
-        grid.asSingleSelect().addValueChangeListener(e -> {
-            personEditor.editPerson((e.getValue()));
-        });
-
-        // Instantiate and edit new Customer the new button is clicked
-        addNewBtn.addClickListener(e -> personEditor.editPerson(
-                Person.builder().build()));
-
-        // Listen changes made by the editor, refresh data from backend
-        personEditor.setChangeHandler(() -> {
-            personEditor.setVisible(false);
-            listCustomers(filter.getValue());
-        });
-
+        addListener();
         listCustomers(null);
     }
 
@@ -71,12 +55,26 @@ public class MainView extends VerticalLayout {
         filter.addValueChangeListener(e -> listCustomers(e.getValue()));
     }
 
-    private void listCustomers(String filterText) {
-        if (StringUtils.isEmpty(filterText)) {
-            grid.setItems(personLogic.findAll());
-        } else  {
-            grid.setItems(personLogic.findByLastName(filterText));
-        }
+    private void addListener() {
+        // Connect selected Customer to editor or hide if none is selected
+        grid.asSingleSelect().addValueChangeListener(e -> {
+            personEditor.editPerson((e.getValue()));
+        });
 
+        // Instantiate and edit new Customer the new button is clicked
+        addNewBtn.addClickListener(e -> personEditor.editPerson(
+                Person.builder().build()));
+
+        // Listen changes made by the editor, refresh data from backend
+        personEditor.setChangeHandler(() -> {
+            personEditor.setVisible(false);
+            listCustomers(filter.getValue());
+        });
+    }
+
+    private void listCustomers(String filterText) {
+        grid.setItems(StringUtils.isEmpty(filterText)
+                ? personLogic.findAll()
+                : personLogic.findByLastName(filterText));
     }
 }

@@ -26,7 +26,7 @@
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <logger name="org.hibernate.type.descriptor.sql" level="INFO" additivity="false">
+    <logger name="org.hibernate.type.descriptor.sql" level="TRACE" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 

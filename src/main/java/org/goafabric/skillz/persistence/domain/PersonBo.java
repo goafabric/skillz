@@ -34,7 +34,7 @@ public class PersonBo {
     @Version //optimistic locking
     private Long version;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     @NonNull
     private AddressBo address;
