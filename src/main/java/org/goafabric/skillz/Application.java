@@ -25,7 +25,6 @@ public class Application {
     }
 
     @Bean
-    @Transactional
     public CommandLineRunner loadData(
             DataCreator dataCreator, PersonRepository repository, AddressRepository addressRepository) {
         return (args) -> {

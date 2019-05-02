@@ -39,6 +39,11 @@ public class PersonLogic {
                 personRepository.findByFirstName(firstName));
     }
 
+    public List<Person> findByLastName(String lastName) {
+        return personMapper.map(
+                personRepository.findByLastNameStartsWithIgnoreCase(lastName));
+    }
+
     public List<Person> findByCity(String city) {
         //List<PersonBo> persons = personRepository.findByCity(city);
         //persons.get(0).getAddress().getCity();

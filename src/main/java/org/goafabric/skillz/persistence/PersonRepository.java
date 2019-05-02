@@ -12,6 +12,8 @@ import java.util.List;
 public interface PersonRepository extends JpaRepository<PersonBo, String> {
     List<PersonBo> findByFirstName(String firstName);
 
+    List<PersonBo> findByLastNameStartsWithIgnoreCase(String lastName);
+
     //@Query("SELECT p from PersonBo p JOIN FETCH p.address as address WHERE address.city = :city")
     @Query("SELECT p from PersonBo p JOIN p.address as address WHERE address.city = :city")
     List<PersonBo> findByCity(@Param("city") String city);
