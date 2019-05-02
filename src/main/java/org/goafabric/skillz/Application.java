@@ -4,6 +4,7 @@ import org.goafabric.skillz.persistence.domain.AddressBo;
 import org.goafabric.skillz.persistence.AddressRepository;
 import org.goafabric.skillz.persistence.domain.PersonBo;
 import org.goafabric.skillz.persistence.PersonRepository;
+import org.joda.time.LocalDateTime;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -50,6 +51,7 @@ public class Application {
             repository.save(PersonBo.builder()
                     .firstName("Monty").lastName("Burns")
                     .address(createAddress(addressRepository, "Monty Mansion"))
+                    .birthDay(LocalDateTime.now())
                     .build());
         }
 
