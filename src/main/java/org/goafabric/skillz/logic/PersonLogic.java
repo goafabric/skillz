@@ -51,6 +51,12 @@ public class PersonLogic {
                 personRepository.findByCity(city));
     }
 
+    public void delete(Person person) {
+        personRepository.delete(
+                personMapper.map(person));
+
+    }
+
     public Person save(Person person) {
         return personMapper.map(
                 personRepository.save(
