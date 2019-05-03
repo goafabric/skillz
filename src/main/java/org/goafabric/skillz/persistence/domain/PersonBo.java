@@ -34,11 +34,9 @@ public class PersonBo {
     //@Version //optimistic locking
     //private Long version;
 
-    /*
-    @OneToOne(fetch = FetchType.EAGER, orphanRemoval = false)
+    @OneToOne(fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     @NonNull
     private AddressBo address;
-     */
 }
 
