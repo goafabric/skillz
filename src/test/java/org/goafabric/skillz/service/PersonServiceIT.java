@@ -9,9 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import javax.persistence.EntityNotFoundException;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+@SpringBootTest//(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @RunWith(SpringRunner.class)
 @Slf4j
 public class PersonServiceIT {
@@ -51,8 +54,27 @@ public class PersonServiceIT {
                 .isNotNull()
                 .isNotEmpty();
     }
-    
      */
+
+    @Test
+    public void update() {
+        final Person person = personService.save(createPerson());
+        person.setFirstName("Chief");
+        personService.save(person);
+
+        assertThat(personService.getById(person.getId()))
+                .isEqualTo(person);
+    }
+
+    @Test
+    public void delete() {
+        final Person person = personService.save(createPerson());
+        personService.delete(person.getId());
+        assertThatThrownBy( ()->
+                personService.getById(person.getId()))
+                .isInstanceOf(EntityNotFoundException.class);
+    }
+
 
     private Person createPerson() {
         return Person.builder()

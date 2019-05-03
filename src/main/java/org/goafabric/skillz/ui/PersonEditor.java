@@ -21,11 +21,11 @@ public class PersonEditor extends VerticalLayout implements KeyNotifier {
     private final PersonLogic personLogic;
 
     /**
-     * The currently edited Person
+     * The currently edited person
      */
-    private Person Person;
+    private Person person;
 
-    /* Fields to edit properties in Person entity */
+    /* Fields to edit properties in person entity */
     TextField firstName = new TextField("First name");
     TextField lastName = new TextField("Last name");
 
@@ -63,17 +63,17 @@ public class PersonEditor extends VerticalLayout implements KeyNotifier {
         // wire action buttons to save, delete and reset
         save.addClickListener(e -> save());
         delete.addClickListener(e -> delete());
-        cancel.addClickListener(e -> editPerson(Person));
+        cancel.addClickListener(e -> editPerson(person));
         setVisible(false);
     }
 
     void delete() {
-        personLogic.delete(Person);
+        personLogic.delete(person.getId());
         changeHandler.onChange();
     }
 
     void save() {
-        personLogic.save(Person);
+        personLogic.save(person);
         changeHandler.onChange();
     }
 
@@ -86,14 +86,14 @@ public class PersonEditor extends VerticalLayout implements KeyNotifier {
         final boolean persisted = person.getId() != null;
         if (persisted) {
             // Find fresh entity for editing
-            Person = personLogic.getById(person.getId());
+            this.person = personLogic.getById(person.getId());
         }
         else {
-            Person = person;
+            this.person = person;
         }
 
         cancel.setVisible(persisted);
-        binder.setBean(Person); // Bind Person properties to similarly named fields
+        binder.setBean(this.person); // Bind person properties to similarly named fields
 
         setVisible(true);
         firstName.focus();

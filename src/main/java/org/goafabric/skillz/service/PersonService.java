@@ -26,4 +26,7 @@ public interface PersonService {
 
     @PostMapping(value = "save", consumes = MediaType.APPLICATION_JSON_VALUE)
     Person save(@RequestBody Person person);
+
+    @DeleteMapping(value = "delete")
+    void delete(@RequestBody String id);
 }
