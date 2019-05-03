@@ -55,10 +55,9 @@ public class Application {
         }
 
         private AddressBo createAddress(AddressRepository addressRepository, String street) {
-            return addressRepository.save(
-                    AddressBo.builder()
+            return AddressBo.builder()
                             .street(street).city("Springfield")
-                            .build());
+                            .build();
         }
     }
 }
