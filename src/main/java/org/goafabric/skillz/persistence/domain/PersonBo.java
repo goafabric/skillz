@@ -38,7 +38,7 @@ public class PersonBo {
     @NonNull
     private AddressBo address;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "person")
+    @OneToMany(fetch = FetchType.EAGER, cascade = {}, mappedBy = "person")
     @NonNull
     private List<SkillBo> skills;
 
