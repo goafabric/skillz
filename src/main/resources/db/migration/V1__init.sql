@@ -17,7 +17,7 @@ create table address
 	id varchar(36) not null
 		constraint pk_address
 			primary key,
-	street varchar(255) NOT NULL,
-	city varchar(255) NOT NULL,
+	street varchar(255) NULL,
+	city varchar(255) NULL,
 	version bigint default 0
 );

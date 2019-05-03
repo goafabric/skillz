@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -44,7 +45,6 @@ public class PersonServiceIT {
                 .isNotEmpty();
     }
 
-    /*
     @Test
     public void findByCity() {
         personService.save(createPerson());
@@ -54,7 +54,6 @@ public class PersonServiceIT {
                 .isNotNull()
                 .isNotEmpty();
     }
-     */
 
     @Test
     public void update() {
