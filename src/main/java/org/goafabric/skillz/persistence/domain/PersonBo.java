@@ -31,8 +31,8 @@ public class PersonBo {
     @Column(name = "birthday")
     private LocalDateTime birthDay;
 
-    @Version //optimistic locking
-    private Long version;
+    //@Version //optimistic locking
+    //private Long version;
 
     /*
     @OneToOne(fetch = FetchType.EAGER, orphanRemoval = false)

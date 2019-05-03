@@ -45,8 +45,8 @@ public class MainView extends VerticalLayout {
         add(actions, grid, personEditor);
 
         grid.setHeight("300px");
-        grid.setColumns("id", "firstName", "lastName");
-        grid.getColumnByKey("id").setWidth("50px").setFlexGrow(0);
+        grid.setColumns("firstName", "lastName");
+        //grid.getColumnByKey("id").setWidth("50px").setFlexGrow(0);
     }
 
     private void addSearchFilter() {
