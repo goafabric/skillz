@@ -9,6 +9,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.Route;
 import org.goafabric.skillz.logic.PersonLogic;
+import org.goafabric.skillz.service.dto.Address;
 import org.goafabric.skillz.service.dto.Person;
 import org.springframework.util.StringUtils;
 
@@ -28,7 +29,7 @@ public class MainView extends VerticalLayout {
         this.personEditor = personEditor;
         grid = new Grid<>(Person.class);
         this.filter = new TextField();
-        this.addNewBtn = new Button("New customer", VaadinIcon.PLUS.create());
+        this.addNewBtn = new Button("New person", VaadinIcon.PLUS.create());
 
         initView();
     }
@@ -63,7 +64,7 @@ public class MainView extends VerticalLayout {
 
         // Instantiate and edit new Customer the new button is clicked
         addNewBtn.addClickListener(e -> personEditor.editPerson(
-                Person.builder().build()));
+                Person.builder().address(new Address()).build()));
 
         // Listen changes made by the editor, refresh data from backend
         personEditor.setChangeHandler(() -> {

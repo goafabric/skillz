@@ -17,6 +17,6 @@ public class Person {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime birthDay;
 
-    //@NonNull
+    @NonNull
     private Address address;
 }

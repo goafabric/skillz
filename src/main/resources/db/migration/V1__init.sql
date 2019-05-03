@@ -8,7 +8,7 @@ create table person
 	first_name varchar(255) NOT NULL,
 	last_name varchar(255) NOT NULL,
 	birthday timestamp,
-	address_id varchar(255) NULL,
+	address_id varchar(255) NOT NULL,
 	version bigint default 0
 );
 
