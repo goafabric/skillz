@@ -40,16 +40,16 @@ public class Application {
         public void create(PersonRepository repository, AddressRepository addressRepository) {
             repository.save(PersonBo.builder()
                     .firstName("Homer").lastName("Simpson")
-                    .address(createAddress(addressRepository, "Evergreen Terace 1"))
+                    //.address(createAddress(addressRepository, "Evergreen Terace 1"))
                     .build());
 
             repository.save(PersonBo.builder()
                     .firstName("Bart").lastName("Simpson")
-                    .address(createAddress(addressRepository, "Everblue Terace 1"))
+                    //.address(createAddress(addressRepository, "Everblue Terace 1"))
                     .build());
             repository.save(PersonBo.builder()
                     .firstName("Monty").lastName("Burns")
-                    .address(createAddress(addressRepository, "Monty Mansion"))
+                    //.address(createAddress(addressRepository, "Monty Mansion"))
                     .birthDay(LocalDateTime.now())
                     .build());
         }

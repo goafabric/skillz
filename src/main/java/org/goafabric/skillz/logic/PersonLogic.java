@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -47,9 +48,11 @@ public class PersonLogic {
     public List<Person> findByCity(String city) {
         //List<PersonBo> persons = personRepository.findByCity(city);
         //persons.get(0).getAddress().getCity();
-        return personMapper.map(
-                personRepository.findByCity(city));
+        return new ArrayList<>();
+        //return personMapper.map(
+         //       personRepository.findByCity(city));
     }
+
 
     public void delete(Person person) {
         personRepository.delete(
