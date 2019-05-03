@@ -10,7 +10,6 @@ create table person
 	birthday timestamp,
 
 	address_id varchar(36) NOT NULL,
-	skill_id varchar(36) NOT NULL,
 	version bigint default 0
 );
 
@@ -31,5 +30,6 @@ create table skill
 			primary key,
 	name varchar(255) NULL,
 	description varchar(255) NULL,
+	person_id varchar(36) NOT NULL,
 	version bigint default 0
 );
