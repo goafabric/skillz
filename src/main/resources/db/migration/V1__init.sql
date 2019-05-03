@@ -8,7 +8,9 @@ create table person
 	first_name varchar(255) NOT NULL,
 	last_name varchar(255) NOT NULL,
 	birthday timestamp,
-	address_id varchar(255) NOT NULL,
+
+	address_id varchar(36) NOT NULL,
+	skill_id varchar(36) NOT NULL,
 	version bigint default 0
 );
 
@@ -19,5 +21,15 @@ create table address
 			primary key,
 	street varchar(255) NULL,
 	city varchar(255) NULL,
+	version bigint default 0
+);
+
+create table skill
+(
+	id varchar(36) not null
+		constraint pk_skill
+			primary key,
+	name varchar(255) NULL,
+	description varchar(255) NULL,
 	version bigint default 0
 );
