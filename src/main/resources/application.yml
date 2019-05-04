@@ -36,3 +36,7 @@ spring:
       locations: classpath:db/migration
       baseline-on-migrate: true
       enabled: true
+
+    jpa:
+      show-sql: true
+      

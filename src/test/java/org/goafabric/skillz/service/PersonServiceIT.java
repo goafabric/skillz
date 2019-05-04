@@ -71,6 +71,7 @@ public class PersonServiceIT {
         assertThatThrownBy( ()->
                 personService.getById(person.getId()))
                 .isInstanceOf(Exception.class);
+
     }
 
 
