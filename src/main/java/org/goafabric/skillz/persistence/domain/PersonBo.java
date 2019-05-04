@@ -1,10 +1,13 @@
 package org.goafabric.skillz.persistence.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import org.joda.time.LocalDateTime;
 import org.springframework.data.annotation.Id;
 
 @Data
+@NoArgsConstructor
 public class PersonBo {
     //private static final long serialVersionUID = 1L;
 
@@ -20,12 +23,7 @@ public class PersonBo {
     //@Version //optimistic locking
     //private Long version;
 
-    /*
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
     @NonNull
     private AddressBo address;
-
-     */
 }
 
