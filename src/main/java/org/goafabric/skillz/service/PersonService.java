@@ -21,8 +21,8 @@ public interface PersonService {
     @GetMapping("findByFirstName")
     List<Person> findByFirstName(@RequestParam String firstName);
 
-    @GetMapping("findByCity")
-    List<Person> findByCity(@RequestParam String city);
+    //@GetMapping("findByCity")
+    //List<Person> findByCity(@RequestParam String city);
 
     @PostMapping(value = "save", consumes = MediaType.APPLICATION_JSON_VALUE)
     Person save(@RequestBody Person person);
