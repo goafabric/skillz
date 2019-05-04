@@ -7,12 +7,10 @@ import org.joda.time.LocalDateTime;
 
 import javax.persistence.*;
 
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name="person")
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class PersonBo {
     //private static final long serialVersionUID = 1L;
 
