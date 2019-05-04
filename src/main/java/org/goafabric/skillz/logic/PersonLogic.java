@@ -48,7 +48,7 @@ public class PersonLogic {
         //List<PersonBo> persons = personRepository.findByCity(city);
         //persons.get(0).getAddress().getCity();
         return personMapper.map(
-                personRepository.findByCity(city));
+                personRepository.findByAddressCity(city));
     }
 
     public Person save(Person person) {

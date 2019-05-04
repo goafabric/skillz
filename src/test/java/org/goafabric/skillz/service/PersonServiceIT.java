@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -71,7 +71,7 @@ public class PersonServiceIT {
         personService.delete(person.getId());
         assertThatThrownBy( ()->
                 personService.getById(person.getId()))
-                .isInstanceOf(EntityNotFoundException.class);
+                .isInstanceOf(NoSuchElementException.class);
     }
 
 
