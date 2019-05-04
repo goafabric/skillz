@@ -1,13 +1,13 @@
 package org.goafabric.skillz.persistence;
 
 import org.goafabric.skillz.persistence.domain.PersonBo;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface PersonRepository extends JpaRepository<PersonBo, String> {
+public interface PersonRepository extends MongoRepository<PersonBo, String> {
     List<PersonBo> findByFirstName(String firstName);
 
     List<PersonBo> findByLastNameStartsWithIgnoreCase(String lastName);
