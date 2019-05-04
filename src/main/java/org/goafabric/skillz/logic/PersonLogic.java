@@ -44,14 +44,12 @@ public class PersonLogic {
                 personRepository.findByLastNameStartsWithIgnoreCase(lastName));
     }
 
-    /*
     public List<Person> findByCity(String city) {
         //List<PersonBo> persons = personRepository.findByCity(city);
         //persons.get(0).getAddress().getCity();
         return personMapper.map(
-                personRepository.findByCity(city));
+                personRepository.findByAddress_City(city));
     }
-     */
 
     public Person save(Person person) {
         return personMapper.map(
