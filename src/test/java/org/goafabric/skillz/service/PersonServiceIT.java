@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -70,10 +71,8 @@ public class PersonServiceIT {
         personService.delete(person.getId());
         assertThatThrownBy( ()->
                 personService.getById(person.getId()))
-                .isInstanceOf(Exception.class);
-
+                .isInstanceOf(NoSuchElementException.class);
     }
-
 
     private Person createPerson() {
         return Person.builder()
