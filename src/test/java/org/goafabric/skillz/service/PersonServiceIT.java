@@ -24,14 +24,14 @@ public class PersonServiceIT {
 
     @Test
     public void getById() {
-        final Person person = personService.save(createPerson()).block();
+        final Person person = createNewPerson();
         assertThat(personService.getById(person.getId()))
                 .isNotNull();
     }
 
     @Test
     public void findAll() {
-        personService.save(createPerson());
+        createNewPerson();
         assertThat(personService.findAll()
                 .collectList().block())
                 .isNotNull()
@@ -40,7 +40,7 @@ public class PersonServiceIT {
 
     @Test
     public void findByFirstName() {
-        personService.save(createPerson());
+        createNewPerson();
         assertThat(personService.findByFirstName("Ralf")
                 .collectList().block())
                 .isNotNull()
@@ -49,7 +49,7 @@ public class PersonServiceIT {
 
     @Test
     public void findByCity() {
-        personService.save(createPerson());
+        createNewPerson();
         List<Person> persons = personService.findByCity("Springfield")
                 .collectList().block();
         log.info(persons.toString());
@@ -60,8 +60,7 @@ public class PersonServiceIT {
 
     @Test
     public void update() {
-        final Person person = personService.save(createPerson())
-                .block();
+        final Person person = createNewPerson();
         person.setFirstName("Chief");
         personService.save(person)
                 .block();
@@ -72,7 +71,7 @@ public class PersonServiceIT {
 
     @Test
     public void delete() {
-        final Person person = personService.save(createPerson()).block();
+        final Person person = createNewPerson();
         personService.delete(person.getId());
         assertThatThrownBy( ()->
                 personService.getById(person.getId()))
@@ -87,4 +86,9 @@ public class PersonServiceIT {
                         .build())
                 .build();
     }
+    private Person createNewPerson() {
+        return personService.save(createPerson()).block();
+    }
+
+
 }

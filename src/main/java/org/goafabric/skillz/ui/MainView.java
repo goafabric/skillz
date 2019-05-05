@@ -11,7 +11,6 @@ import com.vaadin.flow.router.Route;
 import org.goafabric.skillz.logic.PersonLogic;
 import org.goafabric.skillz.service.dto.Address;
 import org.goafabric.skillz.service.dto.Person;
-import org.springframework.util.StringUtils;
 
 
 @Route
@@ -38,7 +37,7 @@ public class MainView extends VerticalLayout {
         createLayout();
         addSearchFilter();
         addListener();
-        listCustomers(null);
+        listCustomers("");
     }
 
     private void createLayout() {
@@ -74,9 +73,7 @@ public class MainView extends VerticalLayout {
     }
 
     private void listCustomers(String filterText) {
-        grid.setItems(StringUtils.isEmpty(filterText)
-                ? personLogic.findAll().collectList().block()
-                : personLogic.findByLastName(filterText).collectList().block()
-        );
+        grid.setItems(
+                personLogic.findByLastName(filterText).collectList().block());
     }
 }

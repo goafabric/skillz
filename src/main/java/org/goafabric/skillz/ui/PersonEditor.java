@@ -73,7 +73,7 @@ public class PersonEditor extends VerticalLayout implements KeyNotifier {
     }
 
     void save() {
-        personLogic.save(person);
+        personLogic.save(person).block();
         changeHandler.onChange();
     }
 

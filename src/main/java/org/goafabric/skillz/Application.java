@@ -27,18 +27,18 @@ public class Application {
             personLogic.save(Person.builder()
                     .firstName("Homer").lastName("Simpson")
                     .address(createAddress("Evergreen Terace 1"))
-                    .build());
+                    .build()).block();
 
             personLogic.save(Person.builder()
                     .firstName("Bart").lastName("Simpson")
                     .address(createAddress("Everblue Terace 1"))
-                    .build());
+                    .build()).block();
 
             personLogic.save(Person.builder()
                     .firstName("Monty").lastName("Burns")
                     .address(createAddress("Monty Mansion"))
                     .birthDay(LocalDateTime.now())
-                    .build());
+                    .build()).block();
         };
 
     }
