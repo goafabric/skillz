@@ -24,7 +24,7 @@ public class PersonServiceIT {
 
     @Test
     public void getById() {
-        final Person person = personService.save(createPerson());
+        final Person person = personService.save(createPerson()).block();
         assertThat(personService.getById(person.getId()))
                 .isNotNull();
     }
@@ -32,7 +32,8 @@ public class PersonServiceIT {
     @Test
     public void findAll() {
         personService.save(createPerson());
-        assertThat(personService.findAll())
+        assertThat(personService.findAll()
+                .collectList().block())
                 .isNotNull()
                 .isNotEmpty();
     }
@@ -40,7 +41,8 @@ public class PersonServiceIT {
     @Test
     public void findByFirstName() {
         personService.save(createPerson());
-        assertThat(personService.findByFirstName("Ralf"))
+        assertThat(personService.findByFirstName("Ralf")
+                .collectList().block())
                 .isNotNull()
                 .isNotEmpty();
     }
@@ -48,7 +50,8 @@ public class PersonServiceIT {
     @Test
     public void findByCity() {
         personService.save(createPerson());
-        List<Person> persons = personService.findByCity("Springfield");
+        List<Person> persons = personService.findByCity("Springfield")
+                .collectList().block();
         log.info(persons.toString());
         assertThat(persons)
                 .isNotNull()
@@ -57,17 +60,19 @@ public class PersonServiceIT {
 
     @Test
     public void update() {
-        final Person person = personService.save(createPerson());
+        final Person person = personService.save(createPerson())
+                .block();
         person.setFirstName("Chief");
-        personService.save(person);
+        personService.save(person)
+                .block();
 
-        assertThat(personService.getById(person.getId()))
+        assertThat(personService.getById(person.getId()).block())
                 .isEqualTo(person);
     }
 
     @Test
     public void delete() {
-        final Person person = personService.save(createPerson());
+        final Person person = personService.save(createPerson()).block();
         personService.delete(person.getId());
         assertThatThrownBy( ()->
                 personService.getById(person.getId()))

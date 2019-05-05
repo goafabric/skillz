@@ -3,8 +3,8 @@ package org.goafabric.skillz.service;
 import org.goafabric.skillz.service.dto.Person;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public interface PersonService {
     String RESOURCE = "/persons";
@@ -13,19 +13,19 @@ public interface PersonService {
     String welcome();
 
     @GetMapping("getById/{id}")
-    Person getById(@PathVariable("id") String id);
+    Mono<Person> getById(@PathVariable("id") String id);
 
     @GetMapping("findAll")
-    List<Person> findAll();
+    Flux<Person> findAll();
 
     @GetMapping("findByFirstName")
-    List<Person> findByFirstName(@RequestParam String firstName);
+    Flux<Person> findByFirstName(@RequestParam String firstName);
 
     @GetMapping("findByCity")
-    List<Person> findByCity(@RequestParam String city);
+    Flux<Person> findByCity(@RequestParam String city);
 
     @PostMapping(value = "save", consumes = MediaType.APPLICATION_JSON_VALUE)
-    Person save(@RequestBody Person person);
+    Mono<Person> save(@RequestBody Person person);
 
     @DeleteMapping(value = "delete")
     void delete(@RequestBody String id);

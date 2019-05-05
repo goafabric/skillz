@@ -1,19 +1,18 @@
 package org.goafabric.skillz.persistence;
 
 import org.goafabric.skillz.persistence.domain.PersonBo;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
 
 @Repository
-public interface PersonRepository extends MongoRepository<PersonBo, String> {
-    List<PersonBo> findByFirstName(String firstName);
+public interface PersonRepository extends ReactiveMongoRepository<PersonBo, String> {
+    Flux<PersonBo> findByFirstName(String firstName);
 
-    List<PersonBo> findByLastNameStartsWithIgnoreCase(String lastName);
+    Flux<PersonBo> findByLastNameStartsWithIgnoreCase(String lastName);
 
     //@Query("SELECT p from PersonBo p JOIN FETCH p.address as address WHERE address.city = :city")
     //@Query("SELECT p from PersonBo p JOIN p.address as address WHERE address.city = :city")
-    List<PersonBo> findByAddress_City(@Param("city") String city);
+    Flux<PersonBo> findByAddress_City(@Param("city") String city);
 }

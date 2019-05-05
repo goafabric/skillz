@@ -86,7 +86,8 @@ public class PersonEditor extends VerticalLayout implements KeyNotifier {
         final boolean persisted = person.getId() != null;
         if (persisted) {
             // Find fresh entity for editing
-            this.person = personLogic.getById(person.getId());
+            this.person =
+                    personLogic.getById(person.getId()).block();
         }
         else {
             this.person = person;

@@ -75,7 +75,8 @@ public class MainView extends VerticalLayout {
 
     private void listCustomers(String filterText) {
         grid.setItems(StringUtils.isEmpty(filterText)
-                ? personLogic.findAll()
-                : personLogic.findByLastName(filterText));
+                ? personLogic.findAll().collectList().block()
+                : personLogic.findByLastName(filterText).collectList().block()
+        );
     }
 }
