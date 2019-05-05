@@ -74,6 +74,14 @@ public class MainView extends VerticalLayout {
 
     private void listCustomers(String filterText) {
         grid.setItems(
-                personLogic.findByLastName(filterText).collectList().block());
+                personLogic.findByLastName(filterText)
+                        .collectList().block());
+
+        /*
+        final List<Person> persons = new ArrayList<>();
+        personLogic.findByLastName(filterText).subscribe(
+                persons::add, null, () -> grid.setItems(persons));
+
+         */
     }
 }
