@@ -15,5 +15,5 @@ public interface PersonRepository extends JpaRepository<PersonBo, String> {
 
     //@Query("SELECT p from PersonBo p JOIN FETCH p.address as address WHERE address.city = :city")
     //@Query("SELECT p from PersonBo p JOIN p.address as address WHERE address.city = :city")
-    List<PersonBo> findByAddressCity(@Param("city") String city);
+    List<PersonBo> findByAddress_City(@Param("city") String city);
 }
