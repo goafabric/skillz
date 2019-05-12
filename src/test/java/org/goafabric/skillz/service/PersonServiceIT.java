@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.persistence.EntityNotFoundException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -81,15 +80,24 @@ public class PersonServiceIT {
 
 
     private Person createPerson() {
-        return Person.builder()
+        Person person =  Person.builder()
                 .firstName("Ralf").lastName("Wiggum")
                 .address(Address.builder()
                         .street("Evergreen Terace 1").city("Springfield")
                         .build())
-                .skills(Arrays.asList(
-                        Skill.builder().id(UUID.randomUUID().toString()).name("java").description("functional").build(),
-                        Skill.builder().id(UUID.randomUUID().toString()).name("go").description("gopher").build())
+                .skills(
+                        Arrays.asList(
+                                Skill.builder()
+                                        .name("java")
+                                        .description("functional")
+                                        .build(),
+                                Skill.builder()
+                                        .name("go")
+                                        .description("gopher")
+                                        .build())
                 )
                 .build();
+
+        return person;
     }
 }

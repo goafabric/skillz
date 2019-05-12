@@ -22,6 +22,5 @@ public class Person {
     @NonNull
     private Address address;
 
-    @NonNull
     private List<Skill> skills;
 }
