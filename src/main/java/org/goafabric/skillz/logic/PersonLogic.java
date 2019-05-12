@@ -21,12 +21,6 @@ public class PersonLogic {
     @Autowired
     private PersonRepository personRepository;
 
-    @Autowired
-    private SkillRepository skillRepository;
-
-    @Autowired
-    private SkillMapper skillMapper;
-
     public String welcome() {
         return "welcome";
     }
@@ -62,18 +56,29 @@ public class PersonLogic {
 
     public Person save(Person person) {
         final PersonBo personBo = personMapper.map(person);
-        /*
-        personBo.setSkills(
-                skillRepository.saveAll(
-                        skillMapper.map(person.getSkills())));
-        */
+
+        //saveSkillsRef(person, personBo);
+        
         return personMapper.map(
                 personRepository.save(personBo));
     }
 
+
     public void delete(String id) {
         personRepository.deleteById(id);
 
+    }
+
+    @Autowired
+    private SkillRepository skillRepository;
+
+    @Autowired
+    private SkillMapper skillMapper;
+
+    private void saveSkillsRef(Person person, PersonBo personBo) {
+        personBo.setSkills(
+                skillRepository.saveAll(
+                        skillMapper.map(person.getSkills())));
     }
 
 }
