@@ -27,9 +27,11 @@ public class PersonServiceIT {
     @Test
     public void getById() {
         final Person person = personService.save(createPerson());
-        log.info(person.toString());
-        assertThat(personService.getById(person.getId()))
-                .isNotNull();
+        Person person1 = personService.getById(person.getId());
+
+        assertThat(person1).isNotNull();
+        assertThat(person1.getAddress()).isNotNull();
+        assertThat(person1.getSkills()).isNotNull().isNotEmpty();
     }
 
     @Test
