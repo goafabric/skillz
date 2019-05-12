@@ -22,7 +22,7 @@ public class SkillBo {
     private String name;
     private String description;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private PersonBo person;
 }

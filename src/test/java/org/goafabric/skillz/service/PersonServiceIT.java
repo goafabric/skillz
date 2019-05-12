@@ -97,7 +97,6 @@ public class PersonServiceIT {
                                         .build())
                 )
                 .build();
-
         return person;
     }
 }

@@ -38,16 +38,14 @@ public class PersonBo {
     @NonNull
     private AddressBo address;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "person")
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy = "person")
     @NonNull
     private List<SkillBo> skills;
 
+    //what a shoehorn of hoseshit is this ?!?!? i have to do this myself ?!
     public void setSkills(List<SkillBo> skills) {
-        for (SkillBo skill : skills) {
-            skill.setPerson(this);
-        }
+        skills.stream().forEach(skill -> skill.setPerson(this));
         this.skills = skills;
-
     }
 }
 
