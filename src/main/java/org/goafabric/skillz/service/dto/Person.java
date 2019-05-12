@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.joda.time.LocalDateTime;
 
+import java.util.List;
+
 
 @Data
 @Builder
@@ -19,4 +21,6 @@ public class Person {
 
     @NonNull
     private Address address;
+
+    private List<Skill> skills;
 }
