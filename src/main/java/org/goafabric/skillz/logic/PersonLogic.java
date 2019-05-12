@@ -1,5 +1,6 @@
 package org.goafabric.skillz.logic;
 
+import lombok.extern.slf4j.Slf4j;
 import org.goafabric.skillz.mapper.PersonMapper;
 import org.goafabric.skillz.persistence.PersonRepository;
 import org.goafabric.skillz.service.dto.Person;
@@ -11,6 +12,7 @@ import reactor.core.publisher.Mono;
 
 @Component
 @Transactional
+@Slf4j
 public class PersonLogic {
     @Autowired
     private PersonMapper personMapper;
@@ -23,8 +25,10 @@ public class PersonLogic {
     }
 
     public Mono<Person> getById(String id) {
-        return personRepository.findById(id)
+        final Mono<Person> person =  personRepository.findById(id)
                 .map(personMapper::map);
+        person.subscribe(p -> log.info(p.toString()));
+        return person;
     }
 
     public Flux<Person> findAll() {
