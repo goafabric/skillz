@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.joda.time.LocalDateTime;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -28,6 +29,7 @@ public class PersonBo {
     @NonNull
     private AddressBo address;
 
+    @DBRef
     private List<SkillBo> skills;
 }
 

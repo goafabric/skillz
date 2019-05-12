@@ -36,3 +36,7 @@ spring:
       locations: classpath:db/migration
       baseline-on-migrate: true
       enabled: true
+
+    data:
+      mongodb:
+        port: 60000
