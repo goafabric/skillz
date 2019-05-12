@@ -62,10 +62,11 @@ public class PersonLogic {
 
     public Person save(Person person) {
         final PersonBo personBo = personMapper.map(person);
+        /*
         personBo.setSkills(
                 skillRepository.saveAll(
                         skillMapper.map(person.getSkills())));
-
+        */
         return personMapper.map(
                 personRepository.save(personBo));
     }
