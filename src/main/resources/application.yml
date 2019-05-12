@@ -22,21 +22,9 @@ info:
 
 
 spring:
-    datasource:
-      url: jdbc:h2:mem:countrydb
-      #url: jdbc:h2:mem:countrydb;INIT=RUNSCRIPT FROM 'classpath:db/migration/V1__init.sql'
-      #url: jdbc:postgresql://localhost:5432/countrydb
-      username: postgres
-      password: postgres
-
-      hikari:
-        maximum-pool-size: 10
-
-    flyway:
-      locations: classpath:db/migration
-      baseline-on-migrate: true
-      enabled: true
-
     data:
       mongodb:
         port: 60000
+        min-connections-per-host: 10
+        max-connections-per-host: 100
+        connect-timeout: 10000
