@@ -18,7 +18,8 @@
     <name>skillz</name>
 
     <properties>
-        <docker.image.prefix>goafabric</docker.image.prefix>
+        <docker.registry>docker.io/goafabric</docker.registry>
+
     </properties>
 
     
