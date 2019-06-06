@@ -1,0 +1,1 @@
+docker run -p 8080:8080 --name skillz -d goafabric/skillz:1.0.0-SNAPSHOT
