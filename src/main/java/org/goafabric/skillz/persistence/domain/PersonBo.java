@@ -44,8 +44,10 @@ public class PersonBo {
 
     //what a shoehorn of hoseshit is this ?!?!? i have to do this myself ?!
     public void setSkills(List<SkillBo> skills) {
-        skills.stream().forEach(skill -> skill.setPerson(this));
-        this.skills = skills;
+        if (skills != null) {
+            skills.stream().forEach(skill -> skill.setPerson(this));
+            this.skills = skills;
+        }
     }
 }
 
